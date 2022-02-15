@@ -70,6 +70,8 @@ class Wrapper:
             )
         )
 
+        self.Cache.put("weather_data", self.get())
+
 
     def get(self) -> dict:
         """Returns weather data"""
@@ -78,9 +80,49 @@ class Wrapper:
         return requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={token}&units=imperial").json()
     
     
-    def update_coords(self, lat : float, lon : float):
+    def setCoords(self, lat : float, lon : float):
         """Updates cached coordinates"""
         self.Cache.put("latlon", (lat, lon))
-        
+
+    
+    def getCoords(self) -> dict:
+        return {
+            "latitude" : self.Cache.get("weather_data")["coord"]["lat"],
+            "longitude" : self.Cache.get("weather_data")["coord"]["lon"]
+        }
+    
+
+    def getClouds(self) -> dict:
+        """Returns cloud cover description"""
+        return {"cloud_cover" : self.Cache.get("weather_data")["weather"]["descripton"]}
+    
+
+    def getTemp(self) -> dict:
+        """Returns temperature information"""
+        return {
+            "temperature" : self.Cache.get("weather_data")["main"]["temp"],
+            "feels_like" : self.Cache.get("main")["feels_like"]
+        }
+    
+
+    def getPressure(self) -> dict:
+        """Returns barometric pressure"""
+        return {"pressure" : self.Cache.get("weather_data")["main"]["pressure"]}
+    
+
+    def getHumidity(self) -> dict:
+        """Returns humidity"""
+        return {"humidity" : self.Cache.get("weather_data")["main"]["humidity"]}
+    
+
+    def getLocation(self) -> dict:
+        return {
+            "country" : self.Cache.get("weather_data")["sys"]["country"],
+            "city" : self.Cache.get("weather_data")["name"]
+        }
+    
+
+
+
         
         
