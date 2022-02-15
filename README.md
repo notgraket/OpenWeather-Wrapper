@@ -1,6 +1,9 @@
 # OpenWeather-Wrapper
-This is a wrapper for the OpenWeather API. OpenWeather requires an api key to work.
+This is a wrapper for the OpenWeather API. Requires an OpenWeather API token.
 
-It uses a combination of 3 apis to work. 
+OpenWeather Docs: https://openweathermap.org/api
 
-One to get your ipaddress, one to get your coordinates, and OpenWeather to get weather data for your area.
+Example Usage:
+Weather = Wrapper(token) # Initiate an instance of Wrapper
+Weather.get() # This returns a dictionary with all weather data for your area
+Weather.update_coords(lat, lon) # Change coordinates used in "Wrapper.get()"
