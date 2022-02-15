@@ -85,11 +85,9 @@ class Wrapper:
         self.Cache.put("latlon", (lat, lon))
 
     
-    def getCoords(self) -> dict:
-        return {
-            "latitude" : self.Cache.get("weather_data")["coord"]["lat"],
-            "longitude" : self.Cache.get("weather_data")["coord"]["lon"]
-        }
+    def update(self):
+        """Updates all weather information"""
+        self.Cache.put("weather_data", self.get())
     
 
     def getClouds(self) -> dict:
