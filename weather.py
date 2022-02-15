@@ -72,3 +72,7 @@ class Wrapper:
         lat, lon = self.Cache.get("latlon")
         token = self.Cache.get("token")
         return requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={token}&units=imperial").json()
+    
+    
+    def update_coords(self, lat, lon):
+        self.Cache.put("latlon", (lat, lon))
