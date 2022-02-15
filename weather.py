@@ -5,7 +5,7 @@
 import requests
 
 class Cache:
-    def __reor__(self):
+    def __repr__(self):
         return "<class 'weather.Cache'>"
         
         
