@@ -4,24 +4,26 @@
 
 import requests
 
-
-
 class Cache:
+    def __reor__(self):
+        return "<class 'weather.Cache'>"
+        
+        
     def __init__(self):
         self.cache = {}
     
 
-    def put(self, key, value):
+    def put(self, key : str, value):
         """Adds an item to the cache"""
         self.cache[key] = value
             
     
-    def get(self, key):
+    def get(self, key : str):
         """Returns a value from the cache"""
         return self.cache[key]
     
 
-    def remove(self, key):
+    def remove(self, key : str):
         """Removes a value from the cache"""
         del self.cache[key]
     
@@ -37,6 +39,8 @@ class Cache:
 
 
 
+    
+    
 class Wrapper:
     def __repr__(self):
         return "<class 'weather.Wrapper'>"
@@ -74,5 +78,9 @@ class Wrapper:
         return requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={token}&units=imperial").json()
     
     
-    def update_coords(self, lat, lon):
+    def update_coords(self, lat : float, lon : float):
+        """Updates cached coordinates"""
         self.Cache.put("latlon", (lat, lon))
+        
+        
+        
