@@ -5,8 +5,21 @@ OpenWeather Docs: https://openweathermap.org/api
 
 Example Usage:
 
-Weather = Wrapper(token) # Initiate an instance of Wrapper, automatically caches your position for the OpenWeather api call
 
-Weather.get() # This returns a dictionary with all weather data for your area
+Weather = Wrapper("token") # Initializes a Wrapper
 
-Weather.update_coords(lat, lon) # Change coordinates used in "Wrapper.get()"
+
+Weather.get() # Returns raw weather data dictionary
+
+Weather.update() # Updates cached data, subsequently updates all other information
+
+Weather.setCoords(lat, lon) # Updates cached coordinates
+
+
+Weather.getTemp() # Returns "temperature" and "feels like"
+
+Weather.getPressure() # Returns "pressure"
+
+Weather.getHumidity() # Returns "humidity"
+
+Weather.getLocation() # Returns Country initials and City name
