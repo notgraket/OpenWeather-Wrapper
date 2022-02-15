@@ -5,7 +5,7 @@ OpenWeather Docs: https://openweathermap.org/api
 
 Example Usage:
 
-Weather = Wrapper(token) # Initiate an instance of Wrapper
+Weather = Wrapper(token) # Initiate an instance of Wrapper, automatically caches your position for the OpenWeather api call
 
 Weather.get() # This returns a dictionary with all weather data for your area
 
